@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 195 33% 97%;
+    --foreground: 240 20% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 20% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 20% 14%;
+
+    --primary: 207 82% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 195 100% 42%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 195 33% 95%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 19 100% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 195 20% 90%;
+    --input: 195 20% 90%;
+    --ring: 207 82% 24%;
+
+    --radius: 0.75rem;
+
+    --crystal: 195 85% 75%;
+    --navy: 207 82% 24%;
+    --aqua: 195 100% 42%;
+    --warm-orange: 19 100% 58%;
+    --charcoal: 240 20% 14%;
+    --medium-gray: 220 9% 46%;
+    --off-white: 195 33% 97%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 20% 6%;
+    --foreground: 0 0% 95%;
+    --card: 240 20% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 20% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 195 100% 42%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 207 82% 24%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 15% 15%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 19 100% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 15% 20%;
+    --input: 240 15% 20%;
+    --ring: 195 100% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  [dir="rtl"] {
+    text-align: right;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .glass-nav {
+    @apply backdrop-blur-xl bg-white/80 border-b border-border/50 shadow-sm;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(207 82% 24% / 0.88), hsl(195 100% 42% / 0.45));
+  }
+
+  .gradient-navy {
+    background: linear-gradient(135deg, hsl(207 82% 24%), hsl(207 82% 30%));
+  }
+
+  .gradient-aqua {
+    background: linear-gradient(135deg, hsl(195 100% 42%), hsl(195 85% 55%));
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:shadow-2xl hover:-translate-y-1;
+  }
+
+  .btn-glow {
+    @apply transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_30px_hsl(195_100%_42%/0.3)];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-l from-primary to-secondary;
+  }
+
+  .wave-divider {
+    position: relative;
+  }
+
+  .wave-divider::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23f7fafb' d='M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z'/%3E%3C/svg%3E") no-repeat bottom;
+    background-size: cover;
+  }
+}
+
+@layer utilities {
+  .animate-counter {
+    animation: countUp 2s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
